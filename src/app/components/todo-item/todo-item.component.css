@@ -1,0 +1,12 @@
+.todo__item {
+    background-color: lightgray;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+}
+
+.todo__checkbox {
+    width: 14px;
+    margin-right: 10px;
+}
