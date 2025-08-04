@@ -1,4 +1,33 @@
-button {
-    margin: 10px;
+.counter {
+    margin: 5px;
+    padding: 5px;
+    width: 300px;
+}
+
+.count {
+    width: 30px;
+    height: 30px;
+    margin: auto;
     padding: 10px;
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    background-color: black;
+    color: white;
+    border-radius: 30px;
+    border: 5px solid lightsalmon;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.buttons button {
+    margin: 5px;
+    padding: 10px;
+    background-color: black;
+    color: white;
 }

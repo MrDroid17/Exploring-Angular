@@ -7,5 +7,5 @@ import { Component, input, signal } from '@angular/core';
   styleUrl: './greeting.component.css'
 })
 export class GreetingComponent {
-  msg = input("Hello, Mr Kumar , welcome to Angular 14 Test Application!");
+  username = input("");
 }

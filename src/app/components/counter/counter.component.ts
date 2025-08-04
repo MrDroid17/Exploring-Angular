@@ -7,16 +7,18 @@ import { Component, signal } from '@angular/core';
   styleUrl: './counter.component.css'
 })
 export class CounterComponent {
-  currentValue = signal(0)
+  count = signal(0);
 
   increment() {
-    this.currentValue.update(value => value + 1);
+    this.count.update((prev) => prev + 1);
   }
+
   decrement() {
-    this.currentValue.update(value => value - 1);
+    this.count.update((prev) => prev - 1);
   }
+
   reset() {
-    this.currentValue.set(0);
+    this.count.set(0);
   }
 
 }

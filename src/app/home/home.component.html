@@ -1,5 +1,5 @@
 <div class="home-container">
-    <app-greeting [msg]="homeMsg()" />
+    <input class="name" type="text" (keyup)="keyUpHandler($event)" placeholder="Enter your name......." />
+    <app-greeting [username]="username()" />
     <app-counter />
-    <input type="text" (keyup)="keyUpHandler($event)" placeholder="Type something..." />
 </div>

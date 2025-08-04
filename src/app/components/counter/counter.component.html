@@ -1,6 +1,10 @@
-<p>Counter: {{currentValue()}}</p>
-<div>
-    <button (click)="increment()">Increment</button>
-    <button (click)="reset()">Reset</button>
-    <button (click)="decrement()">Decrement</button>
+<div class="counter">
+    <div class="count">
+        {{count()}}
+    </div>
+    <div class="buttons">
+        <button (click)="increment()">Increment</button>
+        <button (click)="reset()">Reset</button>
+        <button (click)="decrement()">Decrement</button>
+    </div>
 </div>

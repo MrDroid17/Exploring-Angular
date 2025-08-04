@@ -9,9 +9,10 @@ import { CounterComponent } from '../components/counter/counter.component';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  homeMsg = signal("This is the home page of Angular 19 Test Application. It is a simple application to test Angular 14 features and functionalities.");
+  username = signal("Mr Kumar, welcome to Angular 14 Test Application!");
 
   keyUpHandler(event: KeyboardEvent) {
-    console.log("Key pressed: ", event.key);
+    let inputValue = (event.target as HTMLInputElement).value.trim();
+    this.username.set(inputValue);
   }
 }
