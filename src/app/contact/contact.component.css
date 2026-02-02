@@ -1,0 +1,109 @@
+.mat-error {
+    color: #f44336 !important;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-top: 2px;
+    margin-left: 4px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.form-container {
+    max-width: 420px;
+    margin: 40px auto;
+    padding: 32px 24px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(25, 118, 210, 0.12);
+    border: 2px solid #1976d2;
+}
+
+/* Improved Material form UI */
+.form-container {
+    max-width: 420px;
+    margin: 40px auto;
+    padding: 32px 24px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+    border: 2px solid #1976d2;
+}
+
+.mat-elevation-z4 {
+    box-shadow: 0px 4px 20px rgba(25, 118, 210, 0.12);
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #1976d2;
+    letter-spacing: 1px;
+}
+
+.material-form .full-width {
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.mat-button {
+    min-width: 120px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.success-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #388e3c;
+    font-size: 1.2rem;
+    margin: 32px 0;
+}
+
+.success-text {
+    font-weight: 500;
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1976d2;
+}
+
+.material-form .full-width {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.success-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #388e3c;
+    font-size: 1.2rem;
+    margin: 32px 0;
+}
+
+.success-text {
+    font-weight: 500;
+}

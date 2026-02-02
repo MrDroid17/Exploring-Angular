@@ -1,1 +1,27 @@
-<p>contact works!</p>
+<div class="form-container mat-elevation-z4">
+    <h2 class="form-title">Candidate Application Form</h2>
+    <form [formGroup]="candidateForm" (ngSubmit)="onSubmit()" class="material-form">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" required autocomplete="off">
+            <mat-error *ngIf="candidateForm.get('username')?.hasError('required')">Username is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email ID</mat-label>
+            <input matInput formControlName="email" required autocomplete="off">
+            <mat-error *ngIf="candidateForm.get('email')?.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="candidateForm.get('email')?.hasError('email')">Enter a valid email</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Profile</mat-label>
+            <textarea matInput formControlName="profile" rows="4" required></textarea>
+            <mat-error *ngIf="candidateForm.get('profile')?.hasError('required')">Profile is required</mat-error>
+        </mat-form-field>
+
+        <div class="button-row">
+            <button mat-stroked-button color="primary" type="submit" [disabled]="candidateForm.invalid">Submit</button>
+        </div>
+    </form>
+</div>
