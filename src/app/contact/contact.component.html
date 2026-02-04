@@ -14,10 +14,28 @@
             <mat-error *ngIf="candidateForm.get('email')?.hasError('email')">Enter a valid email</mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="full-width">
+        <mat-form-field appearance="outline" class="full-width" style="position:relative;">
             <mat-label>Profile</mat-label>
-            <textarea matInput formControlName="profile" rows="4" required></textarea>
-            <mat-error *ngIf="candidateForm.get('profile')?.hasError('required')">Profile is required</mat-error>
+            <div class="textarea-overlay-wrapper">
+                <div class="textarea-overlay" aria-hidden="true" tabindex="-1"
+                    [innerHTML]="highlightMentions(candidateForm.get('profile')?.value)">
+                </div>
+                <textarea id="profile-textarea" matInput formControlName="profile" rows="4" required
+                    (input)="onProfileInput($event)" (scroll)="syncScroll($event)"></textarea>
+            </div>
+            @if (candidateForm.get('profile')?.hasError('required')) {
+            <mat-error>Profile is required</mat-error>
+            }
+            @if (showMentionList) {
+            <div class="mention-list"
+                [ngStyle]="{top: mentionDropdownTop + 'px', left: mentionDropdownLeft + 'px', position: 'absolute'}">
+                @for (option of filteredMentions; track option.id) {
+                <div class="mention-item" (click)="selectMention(option)">
+                    <span class="mention-skill">{{option.name}}</span>
+                </div>
+                }
+            </div>
+            }
         </mat-form-field>
 
         <div class="button-row">
