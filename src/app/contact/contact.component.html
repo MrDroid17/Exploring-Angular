@@ -4,14 +4,23 @@
         <mat-form-field appearance="outline" class="full-width">
             <mat-label>Username</mat-label>
             <input matInput formControlName="username" required autocomplete="off">
-            <mat-error *ngIf="candidateForm.get('username')?.hasError('required')">Username is required</mat-error>
+            @if (candidateForm.get('username')?.invalid && (candidateForm.get('username')?.dirty ||
+            candidateForm.get('username')?.touched)) {
+            <mat-error>Username is required</mat-error>
+            }
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
             <mat-label>Email ID</mat-label>
             <input matInput formControlName="email" required autocomplete="off">
-            <mat-error *ngIf="candidateForm.get('email')?.hasError('required')">Email is required</mat-error>
-            <mat-error *ngIf="candidateForm.get('email')?.hasError('email')">Enter a valid email</mat-error>
+            @if (candidateForm.get('email')?.hasError('required') && (candidateForm.get('email')?.dirty ||
+            candidateForm.get('email')?.touched)) {
+            <mat-error>Email is required</mat-error>
+            }
+            @if (candidateForm.get('email')?.hasError('email') && (candidateForm.get('email')?.dirty ||
+            candidateForm.get('email')?.touched)) {
+            <mat-error>Enter a valid email</mat-error>
+            }
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width" style="position:relative;">
@@ -21,9 +30,11 @@
                     [innerHTML]="highlightMentions(candidateForm.get('profile')?.value)">
                 </div>
                 <textarea id="profile-textarea" matInput formControlName="profile" rows="4" required
-                    (input)="onProfileInput($event)" (scroll)="syncScroll($event)"></textarea>
+                    placeholder="Tell us about yourself with @mention-skill here..." (input)="onProfileInput($event)"
+                    (scroll)="syncScroll($event)"></textarea>
             </div>
-            @if (candidateForm.get('profile')?.hasError('required')) {
+            @if (candidateForm.get('profile')?.hasError('required') && (candidateForm.get('profile')?.dirty ||
+            candidateForm.get('profile')?.touched)) {
             <mat-error>Profile is required</mat-error>
             }
             @if (showMentionList) {

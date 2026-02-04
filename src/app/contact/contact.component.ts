@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ViewEncapsulation } from '@angular/core';
+import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 
 export interface MentionOption {
   id: number;
@@ -22,7 +23,8 @@ export interface MentionOption {
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule // Add this
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
@@ -53,12 +55,13 @@ export class ContactComponent {
   mentionStart = -1;
 
   constructor(private fb: FormBuilder,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private snackBar: MatSnackBar // Inject MatSnackBar
   ) {
     this.candidateForm = this.fb.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      profile: [' ', Validators.required]
+      profile: ['', Validators.required]
     });
   }
 
@@ -88,9 +91,28 @@ export class ContactComponent {
     if (this.candidateForm.valid) {
       const { username, email, profile } = this.candidateForm.value;
       console.log('Form submitted:', { username, email, profile });
-      console.log('Skills:', this.mentionedSkills); // now logs skill objects
+      console.log('Mentioned Skills:', this.mentionedSkills); // now logs skill objects
       this.submitted = true;
-      this.candidateForm.reset();
+      this.candidateForm.reset({
+        username: '',
+        email: '',
+        profile: ''
+      });
+      this.candidateForm.setErrors(null);
+      // Mark all controls and the form itself as pristine and untouched
+      Object.values(this.candidateForm.controls).forEach(control => {
+        control.markAsPristine();
+        control.markAsUntouched();
+        control.updateValueAndValidity();
+      });
+      this.candidateForm.markAsPristine();
+      this.candidateForm.markAsUntouched();
+      this.candidateForm.updateValueAndValidity();
+      // Show toast message
+      this.snackBar.open('Form submitted successfully!', 'Close', {
+        duration: 3000,
+        verticalPosition: 'top'
+      });
     }
   }
 
@@ -104,7 +126,6 @@ export class ContactComponent {
     // Replace newlines with <br> for overlay
     text = text.replace(/\n/g, '<br>');
     // Debug: log the HTML output
-    console.log('Overlay HTML:', text);
     return this.sanitizer.bypassSecurityTrustHtml(text);
   }
 

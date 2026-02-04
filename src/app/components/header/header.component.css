@@ -1,7 +1,7 @@
 nav {
     display: flex;
     padding: 10px;
-    background-color: #0e1c29;
+    background-color: #4e7fe0f1;
     color: white;
     justify-content: space-between;
     align-items: center;
@@ -15,7 +15,7 @@ span {
 
 .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 50px;
     margin-right: 50px;
     justify-content: flex-end;
 }
